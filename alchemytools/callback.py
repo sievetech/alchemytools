@@ -1,5 +1,3 @@
-
-
 class Callback:
     def __init__(self, func, *args, **kwargs):
         if not callable(func):
