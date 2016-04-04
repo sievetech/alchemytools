@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+import os
+import sys
+
 from setuptools import setup, find_packages
 from alchemytools import __version__
-import os
 
 BASE_PATH = os.path.dirname(__file__)
 
@@ -17,12 +19,15 @@ setup(
     packages=find_packages(),
     install_requires=['SQLAlchemy>=0.9.2'],
     test_suite='tests',
-    tests_require=['mock==1.0.1'],
+    tests_require=['mock>=1.0.1'] if sys.version_info.major == 2 else [],
     classifiers=[
           'Intended Audience :: Developers',
           'License :: OSI Approved :: BSD License',
           'Programming Language :: Python',
-          'Programming Language :: Python :: 2.6',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.4',
+          'Programming Language :: Python :: 3.5',
           'Topic :: Software Development',
           'Topic :: Software Development :: Libraries',
           'Topic :: Software Development :: Libraries :: Python Modules',

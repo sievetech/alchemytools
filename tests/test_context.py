@@ -105,10 +105,11 @@ class ManagedAsContextManagerTest(unittest.TestCase):
     def test_callback_is_called(self):
         func = mock.Mock()
         callback = Callback(func, 42, foo="bar")
-        with managed(mock.Mock(), callback=callback):
-            pass
+        with self.assertRaises(Exception):
+            with managed(mock.Mock(), callback=callback):
+                raise Exception
 
-        func.assert_called_once(42, foo="bar")
+            func.assert_called_once_with(42, foo="bar")
 
     def test_session_is_closed_on_return(self):
         real_session = mock.Mock()
